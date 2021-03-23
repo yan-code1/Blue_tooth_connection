@@ -63,6 +63,13 @@ class DeviceConnector:
 
     def deviceDiscovery(self):
         tries=0
+        # uuid = "00001101-0000-1000-8000-00805F9B34FB"
+        # search for the SampleServer service
+        # service_matches = find_service(uuid = addr )
+        #
+        # if len(service_matches) == 0:
+        #     print("couldn't find the SampleServer service =(")
+        #     sys.exit(0)
         try:
             nearby_devices = bluetooth.discover_devices(lookup_names = True, duration=5)
             while nearby_devices.__len__() == 0 and tries < 3:   #多次

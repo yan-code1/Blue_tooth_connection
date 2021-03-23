@@ -6,7 +6,7 @@ addr = "D0:57:7B:80:C1:A8"
 # uuid = "00001101-0000-1000-8000-00805F9B34FB"
 # nearby_devices = discover_devices(lookup_names=True)
 # print(nearby_devices)#附近所有可连的蓝牙设备
-
+# uuid = "00001101-0000-1000-8000-00805F9B34FB"
 # search for the SampleServer service
 # service_matches = find_service(uuid = addr )
 #
