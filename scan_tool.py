@@ -8,7 +8,7 @@ nearby_devices = bluetooth.discover_devices(lookup_names=True)
 print(nearby_devices)#附近所有可连的蓝牙设备
 
 
-name='DESKTOP-55TDMGV'#'BT'#需连接的设备名字
+name='111111111111111111111'#'BT'#需连接的设备名字
 addr=None
 for device in nearby_devices:
     if name==device[1]:

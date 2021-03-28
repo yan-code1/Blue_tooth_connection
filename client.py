@@ -1,9 +1,9 @@
 from bluetooth import *
 import sys
 #android有关bluetooth的API，用于普通蓝牙适配器和android手机蓝牙模块连接的，而且这个UUID的值必须是00001101-0000-1000-8000-00805F9B34FB。
-name='DESKTOP-TQ5O8MJ'
+
 addr = "D0:57:7B:80:C1:A8"
-# uuid = "00001101-0000-1000-8000-00805F9B34FB"
+uuid = "e36b2853-e511-4389-b83d-c2928dfc7d82"
 # nearby_devices = discover_devices(lookup_names=True)
 # print(nearby_devices)#附近所有可连的蓝牙设备
 # uuid = "00001101-0000-1000-8000-00805F9B34FB"
@@ -16,6 +16,10 @@ addr = "D0:57:7B:80:C1:A8"
 
 # Create the client socket
 sock=BluetoothSocket(RFCOMM)
+advertise_service(sock,"client",service_id=uuid,
+                  service_classes=[uuid, SERIAL_PORT_CLASS],
+                  profiles=[SERIAL_PORT_PROFILE],
+                  )
 sock.connect((addr,4))
 print("ready to connect")
 # try:

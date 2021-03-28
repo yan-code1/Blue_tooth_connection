@@ -1,22 +1,24 @@
 from threading import Thread
 
-from bluetooth import *
+import bluetooth
 import sys
-uuid = "00001101-0000-1000-8000-00805F9B34FB"
+uuid = "e36b2853-e511-4389-b83d-c2928dfc7d82"
 def serverListen(uuid = uuid):
-    server_sock = BluetoothSocket(RFCOMM)
-    server_sock.bind(("", PORT_ANY))
+    server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+    server_sock.bind(("", bluetooth.PORT_ANY))
     server_sock.listen(5)
 
     dataport = server_sock.getsockname()[1]
     clientID = 0
-    advertise_service(server_sock, "SampleServer",
+    bluetooth.advertise_service(server_sock, "SampleServer",
                       service_id=uuid,
-                      service_classes=[uuid, SERIAL_PORT_CLASS],
-                      profiles=[SERIAL_PORT_PROFILE],
+                      service_classes=[uuid, bluetooth.SERIAL_PORT_CLASS],
+                      profiles=[bluetooth.SERIAL_PORT_PROFILE],
                       #                   protocols = [ OBEX_UUID ]
                       )
-
+    # services = bluetooth.find_service(uuid=uuid)
+    # addr = services[0]["host"]
+    #
     print("Waiting for connection on RFCOMM channel %d" % dataport)
     while True:
         client_sock, client_info = server_sock.accept()
